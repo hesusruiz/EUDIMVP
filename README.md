@@ -1,3 +1,3 @@
 # EUDIMVP
 
-![Issuance flow](images/employee_badge.svg.drawio)
+![Issuance flow](images/employee_badge.drawio.svg)

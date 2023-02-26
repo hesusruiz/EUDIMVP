@@ -2,6 +2,10 @@
 
 # Issuance: Profile 1
 
+## Main components in the profile
+
+![Main components](images/issuance_background.svg)
+
 **End user**: this profile is valid for both natural and juridical persons.
 
 **Wallet**
@@ -31,11 +35,39 @@ The Issuer backend and the Authorization server could be implemented as a single
 
 We assume that the Issuer and End User have a previous relationship and that the Issuer has performed the KYC required by regulation and needed to be able to issue Verifiable Credentials attesting some attributes about the End User. We assume that there is an existing trusted authentication mechanism (not necessarily related to Verifiable Credentials) that the End User employs to access protected resources from the Issuer. For example, the user is an employee or a customer of the Issuer, or the Issuer is a Local Administration and the End User is a citizen living in that city.
 
-## Overview o the interactions
 
-![Issuance flow](images/employee_badge.drawio.svg)
-
-<a href="https://app.diagrams.net/#Hhesusruiz%2FEUDIMVP%2Fmain%2Fimages%2Femployee_badge.drawio.svg" target="_blank">Edit in diagrams.net</a>
 
 ## Authentication
 
+![Issuance authentication](images/issuance_authentication.svg)
+
+Before requesting a new credential, the End User has to authenticate with the Issuer with the mechanism already implemented by the Issuer. This profile does not require that it is based on OIDC or any other specific mechanism.
+
+The level of assurance (LoA) of this authentication mechanism is one of the factors that will determine the LoA or confidence that the Verifiers can have on the credentials received by them from a given Issuer.
+
+
+## Credential Offer
+
+![Credential offer](images/issuance_credentialoffer.svg)
+
+## Issuer Metadata
+
+![Issuer Metadata](images/issuance_issuermetadata.svg)
+
+## Access Token
+
+![Access Token](images/issuance_accesstoken.svg)
+
+## Request and receive Credential
+
+![Request and receive Credential](images/issuance_requestcredential.svg)
+
+
+
+## Overview of the interactions
+
+![Issuance flow](images/issuance_all.drawio.svg)
+
+<a href="https://app.diagrams.net/#Hhesusruiz%2FEUDIMVP%2Fmain%2Fimages%2Fissuance_all.drawio.svg" target="_blank">Edit in diagrams.net</a>
+
+<a href="https://www.draw.io/?lightbox=1&edit=_blank#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhesusruiz%2FEUDIMVP%2Fmain%2Fimages%2Fissuance_all.drawio.svg" target="_blank">View in diagrams.net</a>

@@ -2,6 +2,8 @@
 
 # Issuance: Profile 1
 
+![](images/embed.svg)
+
 ## Main components in the profile
 
 ![Main components](images/issuance_background.svg)

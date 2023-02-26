@@ -6,7 +6,9 @@
 
 ![Main components](images/issuance_background.svg)
 
-**End user**: this profile is valid for both natural and juridical persons.
+**End user**
+
+This profile is valid for both natural and juridical persons.
 
 **Wallet**
 

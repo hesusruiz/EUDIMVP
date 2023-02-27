@@ -113,19 +113,18 @@ The Issuer MUST make sure that every Credential Offer URI is unique for all cred
 
 ## Credential Issuer Metadata
 
-![Issuer Metadata](images/issuance_issuermetadata.svg)
-
-### Credential Issuer Identifier
+The Wallet backend retrieves the Credential Issuer's configuration using the Credential Issuer Identifier that was received in the Credential Offer.
 
 A Credential Issuer is identified in this context by a case sensitive URL using the https scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components. No DID is used in this context.
-
-### Credential Issuer Metadata Retrieval
-
-The Credential Issuer's configuration can be retrieved using the Credential Issuer Identifier.
 
 Credential Issuers MUST make a JSON document available at the path formed by concatenating the string `/.well-known/openid-credential-issuer` to the Credential Issuer Identifier. If the Credential Issuer value contains a path component, any terminating / MUST be removed before appending `/.well-known/openid-credential-issuer`.
 
 `openid-credential-issuer` MUST point to a JSON document compliant with this specification and MUST be returned using the `application/json` content type.
+
+The retrieval of the Credential Issuer configuration is illustrated below.
+
+![Issuer Metadata](images/issuance_issuermetadata.svg)
+
 
 ### Credential Issuer Metadata Parameters
 

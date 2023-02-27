@@ -1,5 +1,15 @@
 # EUDIMVP
 
+The The [European Digital Identity Wallet Architecture and Reference Framework](https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework) (ARF) provides a set of the specifications needed to develop an interoperable European Digital Identity (EUDI) Wallet Solution based on common standards and practices.
+
+At this moment (version 1.0.0), the ARF includes a lot of flexibility and some areas not yet detailed, so it is difficult for different implementers to achieve true interoperability.
+
+This document defines an initial simple profile of the credential exchange mechanisms in ARF (issuance and presentation) that implementations can follow in order to achieve interoperability across different implementations in the initial stages of the project.
+
+The generic name of the profile is MVP (Minimum Viable Profile). It essentially defines some sensible restrictions and specific definitions in the ARF and the underlying OIDC protocols so we can achieve faster initial interoperability and at the same time enough functionality and with a high degree of security.
+
+The main documents referred to in this profile are the ARF and the OIDC family: [OpenID for Verifiable Credential Issuance](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-request) (OIDC4VCI), [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) (OIDC4VP) and [Self-Issued OpenID Provider V2](https://openid.bitbucket.io/connect/openid-connect-self-issued-v2-1_0.html) (SIOPv2).
+
 # Issuance: Profile 1
 
 ## Main components in the profile
@@ -54,7 +64,7 @@ In this profile the wallet does not have to implement the Credential Offer Endpo
 
 Instead, the Credential Issuer renders a QR code containing a reference to the Credential Offer that can be scanned by the End-User using a Wallet, as described in section 4.1 of OIDCVCI.
 
-According to the spec, the Credential Offer object is a JSON object containing the Credential Offer parameters and can be sent by value or by reference. To avoid problems with the size of the QR, this profile requires that the QR contains the `credential_offer_uri`, which is a URL using the `https` scheme referencing a resource containing a JSON object with the Credential Offer parameters. The `credential_offer_uri` should be implemented by the Issuer backend.
+According to the spec, the Credential Offer object is a JSON object containing the Credential Offer parameters and can be sent by value or by reference. To avoid problems with the size of the QR traveling in the URL, this profile requires that the QR contains the `credential_offer_uri`, which is a URL using the `https` scheme referencing a resource containing a JSON object with the Credential Offer parameters. The `credential_offer_uri` endpoint should be implemented by the Issuer backend.
 
 ### Credential Offer Parameters
 
@@ -62,9 +72,9 @@ This profile restricts the options available in section 4.1.1 of OIDC4VCI. The p
 
 - `credential_issuer`: REQUIRED. The URL of the Credential Issuer that will be used by the Wallet to obtain one or more Credentials.
 
-- `credentials`: REQUIRED. A JSON array, where every entry is a JSON string. The string value MUST be one of the id values in one of the objects in the `credentials_supported` Credential Issuer metadata parameter (described later). When processing, the Wallet MUST resolve this string value to the respective object.
+- `credentials`: REQUIRED. A JSON array, where every entry is a JSON string. To achieve interoperability faster, this profile defines a global Trusted Credential Schemas List where well-known credential schemas are defined, in addition to the individual credentials that each Issuer can define themselves. The string value MUST be one of the id values in one of the objects in the `credentials_supported` metadata parameter of the Trusted Credential Schemas List (described later), or one of the id values in one of the objects in the `credentials_supported` Credential Issuer metadata parameter provided by the Credential Issuer. When processing, the Wallet MUST resolve this string value to the respective object. The credentials defined in the global Trusted Credential Schema List have precedence over the ones defined by the Credential Issuer. 
 
-- `grants`: REQUIRED. A JSON object indicating to the Wallet the Grant Type `pre-authorized_code`. This grant is represented by a key and an object, where the key is `urn:ietf:params:oauth:grant-type:pre-authorized_code`.
+- `grants`: REQUIRED. A JSON object indicating to the Wallet the Grant Type `pre-authorized_code`. This grant is represented by a key and an object, where the key is `urn:ietf:params:oauth:grant-type:pre-authorized_code`. In this profile the credential issuance flow requires initial authentication of the End User by the Credential Issuer, so the Pre-Authorized Code Flow achieves a good level of security and we do not need the more general Authorization Code Flow.
 
 The grant object contains the following values:
 
@@ -338,11 +348,8 @@ Cache-Control: no-store
 }
 ```
 
+## Credentials Supported in the ecosystem
 
-## Summary: Overview of the interactions
+TODO: define the details of the Trusted List of main credentials supported in the ecosystem.
 
-![Issuance flow](images/issuance_all.drawio.svg)
 
-<a href="https://app.diagrams.net/#Hhesusruiz%2FEUDIMVP%2Fmain%2Fimages%2Fissuance_all.drawio.svg" target="_blank">Edit in diagrams.net</a>
-
-<a href="https://www.draw.io/?lightbox=1&edit=_blank#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhesusruiz%2FEUDIMVP%2Fmain%2Fimages%2Fissuance_all.drawio.svg" target="_blank">View in diagrams.net</a>

@@ -1,6 +1,6 @@
 # EUDIMVP
 
-The The [European Digital Identity Wallet Architecture and Reference Framework](https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework) (ARF) provides a set of the specifications needed to develop an interoperable European Digital Identity (EUDI) Wallet Solution based on common standards and practices.
+The [European Digital Identity Wallet Architecture and Reference Framework](https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework) (ARF) provides a set of the specifications needed to develop an interoperable European Digital Identity (EUDI) Wallet Solution based on common standards and practices.
 
 At this moment (version 1.0.0), the ARF includes a lot of flexibility and some areas not yet detailed, so it is difficult for different implementers to achieve true interoperability.
 

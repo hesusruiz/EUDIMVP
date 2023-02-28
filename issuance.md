@@ -162,7 +162,7 @@ In this profile the Wallet does not have to authenticate when using the Token En
 
 Below is a non-normative example of a Token Request:
 
-```
+```HTTP
 POST /token HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
@@ -184,6 +184,7 @@ In addition to the response parameters defined in [RFC6749], the Authorization S
 
 Below is a non-normative example of a Token Response:
 
+```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-store
@@ -195,6 +196,7 @@ Cache-Control: no-store
     "c_nonce": "tZignsnFbp",
     "c_nonce_expires_in": 86400
   }
+```
 
 ### Token Error Response
 
@@ -273,7 +275,7 @@ where the JWT looks like this:
   "typ": "openid4vci-proof+jwt",
   "alg": "ES256",
   "kid":"did:example:ebfeb1f712ebc6f1c276e12ec21/keys/1"
-}.
+}
 {
   "iss": "s6BhdRkqt3",
   "aud": "https://server.example.com",
@@ -298,7 +300,7 @@ The following claims are used in the Credential Response:
 
 Below is a non-normative example of a Credential Response:
 
-```json
+```HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-store
@@ -321,7 +323,7 @@ Upon receiving a Credential Request, the Credential Issuer MUST require the Wall
 
 Below is a non-normative example of a Credential Response with the Credential Issuer requesting a Wallet to provide in a subsequent Credential Request a proof that is bound to a `c_nonce`:
 
-```json
+```HTTP
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Cache-Control: no-store

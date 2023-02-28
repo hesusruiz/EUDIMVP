@@ -14,7 +14,7 @@ The main documents referred to in this profile are the ARF and the OIDC family: 
 
 ## Main components in the profile
 
-![Main components](images/issuance_background.svg)
+![Main components](images/issuance/issuance_background.svg)
 
 **End user**
 
@@ -49,7 +49,7 @@ We assume that the Issuer and End User have a previous relationship and that the
 
 ## Authentication
 
-![Issuance authentication](images/issuance_authentication.svg)
+![Issuance authentication](images/issuance/issuance_authentication.svg)
 
 Before requesting a new credential, the End User has to authenticate with the Issuer with whatever mechanism is already implemented by the Issuer. This profile does not require that it is based on OIDC, Verifiable Credentials or any other specific mechanism. However, the Issuer may implement the authentication mechanism using Verifiable Credentials and OIDC4VP described later in this document.
 
@@ -58,7 +58,7 @@ The level of assurance (LoA) of this authentication mechanism is one of the fact
 
 ## Credential Offer
 
-![Credential offer](images/issuance_credentialoffer.svg)
+![Credential offer](images/issuance/issuance_credentialoffer.svg)
 
 In this profile the wallet does not have to implement the Credential Offer Endpoint described in section 4 of [OpenID for Verifiable Credential Issuance](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) (OIDCVCI).
 
@@ -123,7 +123,7 @@ Credential Issuers MUST make a JSON document available at the path formed by con
 
 The retrieval of the Credential Issuer configuration is illustrated below.
 
-![Issuer Metadata](images/issuance_issuermetadata.svg)
+![Issuer Metadata](images/issuance/issuance_issuermetadata.svg)
 
 
 ### Credential Issuer Metadata Parameters
@@ -156,7 +156,7 @@ This specification also defines a new OAuth 2.0 Authorization Server metadata [R
 
 ## Access Token
 
-![Access Token](images/issuance_accesstoken.svg)
+![Access Token](images/issuance/issuance_accesstoken.svg)
 
 The Wallet invokes the Token Endpoint implemented by the Authorization Server, which issues an Access Token and, optionally, a Refresh Token in exchange for the Pre-authorized Code that the wallet obtained in the Credential Offer.
 
@@ -215,7 +215,7 @@ If the Token Request is invalid or unauthorized, the Authorization Server constr
 
 ## Request and receive Credential
 
-![Request and receive Credential](images/issuance_requestcredential.svg)
+![Request and receive Credential](images/issuance/issuance_requestcredential.svg)
 
 
 The Wallet backend invokes the Credential Endpoint, which issues a Credential as approved by the End-User upon presentation of a valid Access Token representing this approval.

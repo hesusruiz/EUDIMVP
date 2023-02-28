@@ -167,7 +167,7 @@ POST /token HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
 
-  grant_type=urn:ietf:params:oauth:grant-type:pre-authorized_code
+  grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Apre-authorized_code
   &pre-authorized_code=SplxlOBeZQQYbYS6WxSbIA
   &user_pin=493536
 ```
@@ -256,15 +256,12 @@ This specification defines the following values for proof_type:
 
 The Credential Issuer MUST validate that the proof is actually signed by a key identified in the JOSE Header.
 
-Below is a non-normative example of a proof parameter (line breaks for display purposes only):
+Below is a non-normative example of a proof parameter (dots in the middle of jwt for display purposes only):
 
 ```json
 {
   "proof_type": "jwt",
-  "jwt": "eyJraWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEva2V5cy8
-  xIiwiYWxnIjoiRVMyNTYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJzNkJoZFJrcXQzIiwiYXVkIjoiaHR
-  0cHM6Ly9zZXJ2ZXIuZXhhbXBsZS5jb20iLCJpYXQiOiIyMDE4LTA5LTE0VDIxOjE5OjEwWiIsIm5vbm
-  NlIjoidFppZ25zbkZicCJ9.ewdkIkPV50iOeBUqMXCC_aZKPxgihac0aW9EkL1nOzM"
+  "jwt": "eyJraWQiOiJkaWQ6ZXhhb....aZKPxgihac0aW9EkL1nOzM"
 }
 ```
 
@@ -339,6 +336,6 @@ Cache-Control: no-store
 
 ## Credentials Supported in the ecosystem
 
-TODO: define the details of the Trusted List of main credentials supported in the ecosystem.
+The credentials which are global in the ecosystem have to be registered in the [Trusted Schemas Registry](trusted_schemas.md)
 
 
